@@ -1,0 +1,231 @@
+:root {
+    --dourado-luxo: #c5a059; 
+    --bege-claro: #f9f7f2;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bege-claro);
+    color: var(--texto-escuro);
+    margin: 0;
+    /* Substitua pelo link de uma imagem de mármore se desejar fundo texturizado */
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://www.transparenttextures.com/patterns/marble-white.png');
+}
+
+/* --- ESTILO DO HEADER COM A IMAGEM DE FUNDO --- */
+header {
+    text-align: center;
+    background-image: url('img/header-luxo.jpg');
+    /* Mudança aqui: contain faz a imagem caber inteira na largura */
+    background-size: contain; 
+    background-position: top center; 
+    background-repeat: no-repeat;
+    
+    /* No desktop, vamos manter uma altura proporcional */
+    width: 100%;
+    height: 200px; 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+/* Como a imagem já tem o nome da loja, vamos esconder o texto do HTML 
+   apenas visualmente para não ficar duplicado sobre a imagem */
+header .logo, header p {
+    display: none;
+}
+
+/* Ajuste das cores do texto sobre a imagem */
+.logo {
+    color: white; /* Muda para branco para contraste */
+    /* Mantém as outras propriedades antigas */
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; /* Aumentado um pouco */
+    letter-spacing: 5px;
+}
+
+header p {
+    color: #ffffff; /* Um dourado mais claro e vivo para o subtítulo */
+    font-weight: 600;
+    margin-top: -10px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--dourado);
+    letter-spacing: 4px;
+}
+
+.hero {
+    text-align: center;
+    padding: 10x 10px;
+    background: white;
+    margin-bottom: 40px;
+}
+
+.grid-perfumes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    padding: 20px;
+}
+
+.btn-pedido {
+    display: block;
+    background-color: var(--dourado-luxo);
+    color: white !important; /* Força o texto a ser branco */
+    text-decoration: none;
+    text-align: center;
+    padding: 12px 20px;
+    margin-top: 15px;
+    border-radius: 30px; /* Deixa o botão arredondado como pedimos antes */
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--dourado-luxo);
+}
+
+.btn-pedido:hover {
+    background-color: white;
+    color: var(--dourado-luxo) !important;
+    transform: scale(1.05); /* Efeito de aumentar levemente ao passar o mouse */
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+}
+
+
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--dourado);
+}
+
+.card img {
+    max-width: 70%;
+    border-radius: 5px;
+}
+
+.price {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--dourado);
+}
+
+.btn-comprar {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--dourado);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+    background: #fff;
+}
+
+.tag-atacado {
+    display: inline-block;
+    background: var(--dourado);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.8rem;
+}
+
+.info-revenda {
+    background: #fff;
+    border: 1px solid var(--dourado);
+    padding: 15px;
+    text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+
+.brand {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    background: var(--dourado);
+    color: white;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* --- ESTILOS DA BARRA DE BUSCA --- */
+.busca-container {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+#campoBusca {
+    width: 80%;
+    max-width: 500px;
+    padding: 15px 20px;
+    font-size: 1rem;
+    border: 2px solid var(--bege-claro);
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#campoBusca:focus {
+    outline: none;
+    border-color: var(--dourado);
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.2);
+}
+
+/* Garante que o container principal tenha um max-width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* AJUSTE PARA CELULAR (Telas menores que 600px) */
+/* AJUSTE PARA CELULAR */
+@media (max-width: 600px) {
+    header {
+        /* Isso calcula a altura proporcional para o banner de 1080x200 */
+        height: auto;
+        aspect-ratio: 1080 / 200; 
+        background-size: contain;
+        margin-bottom: 10px;
+    }
+    
+    /* Ajuste para o grid de perfumes não ficar com itens muito pequenos */
+    .grid-perfumes {
+        grid-template-columns: repeat(2, 1fr); /* Força 2 colunas no celular */
+        gap: 15px;
+        padding: 10px;
+    }
+}
