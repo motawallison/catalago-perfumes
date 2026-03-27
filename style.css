@@ -82,7 +82,7 @@ header p {
     text-decoration: none;
     text-align: center;
     padding: 12px 20px;
-    margin-top: 15px;
+    margin-top: 5px;
     border-radius: 30px; /* Deixa o botão arredondado como pedimos antes */
     font-weight: 600;
     font-size: 0.9rem;
@@ -162,11 +162,44 @@ footer {
 }
 
 .brand {
-    font-size: 0.8rem;
-    color: #888;
+    display: flex;
+    align-items: flex-end; 
+    gap: 10px;            
+    color: #b5945a;       
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
+}
+
+.parcelas {
+    font-size: 0.7em;     
+    font-weight: normal;  
+    color: #888;          
+    margin-bottom: 2px;   
+}
+
+.nome_perfume {
+    display: flex;
+    align-items: flex-end; 
+    gap: 8px;       
+    line-height: 1;
+    margin: 0;    
+}
+
+.volumetria {
+    font-size: 0.6em;    
+    color: #666;         
+    font-weight: normal; 
+    vertical-align: baseline;
+}
+.desconto {
+    font-size:small;
+    color: #ff0000;
     text-transform: uppercase;
+    text-decoration: line-through;
     letter-spacing: 1px;
-    margin-bottom: 10px;
+    margin: 2px 0;
+
 }
 
 .badge {
@@ -229,3 +262,4 @@ footer {
         padding: 10px;
     }
 }
+

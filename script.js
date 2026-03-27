@@ -13,11 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const marcaPerfume = marcaPerfumeElement ? marcaPerfumeElement.textContent.toLowerCase() : '';
 
             // Verifica se o termo está no nome OU na marca
+
             if (nomePerfume.includes(termoBusca) || marcaPerfume.includes(termoBusca)) {
-                // Mostra o card
-                card.style.display = 'block';
+                card.style.display = 'flex'; // Mantém o comportamento do CSS
             } else {
-                // Esconde o card
                 card.style.display = 'none';
             }
         });
