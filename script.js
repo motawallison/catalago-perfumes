@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     campoBusca.addEventListener('keyup', () => {
         const termoBusca = campoBusca.value.toLowerCase().trim();
 
+
         cards.forEach(card => {
             // Pega o nome do perfume (h3)
             const nomePerfume = card.querySelector('h3').textContent.toLowerCase();
