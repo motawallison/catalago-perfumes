@@ -14,10 +14,26 @@ body {
 }
 
 /* --- ESTILO DO HEADER COM A IMAGEM DE FUNDO --- */
+header {
+    text-align: center;
+    background-image: url('img/header-luxo.jpg');
+    /* Mudança aqui: contain faz a imagem caber inteira na largura */
+    background-size: contain; 
+    background-position: top center; 
+    background-repeat: no-repeat;
+    
+    /* No desktop, vamos manter uma altura proporcional */
+    width: 100%;
+    height: 200px; 
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: none;
+    margin-bottom: 20px;
+}
 
-
-/* Como a imagem já tem o nome da loja, vamos esconder o texto do HTML 
-   apenas visualmente para não ficar duplicado sobre a imagem */
 header .logo, header p {
     display: none;
 }
