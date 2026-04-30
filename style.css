@@ -287,3 +287,23 @@ footer {
     background: var(--dourado-luxo);
     color: white;
 }
+
+/* Destaque para o texto ESGOTADO */
+.brand.esgotado {
+    color: #d9534f; /* Um tom de vermelho/vinho para alerta */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+}
+
+/* Estilo para o botão desativado */
+.btn-desativado {
+    background-color: #ccc !important; /* Cinza */
+    border-color: #ccc !important;
+    color: #666 !important;
+    cursor: not-allowed; /* Muda o mouse para sinal de proibido */
+    pointer-events: none; /* Impede o clique real no link */
+    transform: none !important; /* Remove efeitos de hover */
+    box-shadow: none !important;
+}
