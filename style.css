@@ -335,63 +335,66 @@ main#catalogo {
 
 /* Ajuste responsivo: no celular, volta a ficar um embaixo do outro */
 /* Ajustes para telas pequenas (Celulares) */
-@media (max-width: 600px) {
-    /* Faz o catálogo ocupar a largura total sem margens laterais grandes */
-    .layout-principal.container {
-        padding: 0 10px;
+/* Ajustes para Celulares e Telas Pequenas */
+@media (max-width: 768px) {
+    /* 1. Faz a Sidebar e o Catálogo ficarem um embaixo do outro */
+    .layout-principal {
+        flex-direction: column;
+        gap: 15px;
     }
 
-    /* Ajusta o Grid para 3 colunas (ou 4 se mudar o número abaixo) */
+    /* 2. Sidebar ocupa a largura total no topo */
+    .sidebar {
+        flex: none;
+        width: 100%;
+        position: static;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    /* 3. Ajusta a lista de categorias para não ocupar muito espaço vertical */
+    .lista-categorias {
+        display: flex;
+        overflow-x: auto; /* Permite rolar as categorias para o lado se necessário */
+        gap: 10px;
+        padding-bottom: 5px;
+    }
+
+    .item-categoria {
+        white-space: nowrap; /* Impede que o texto quebre linha */
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    /* 4. O GRID: Aqui definimos as colunas dos perfumes */
     .grid-perfumes {
-        grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
-        gap: 8px; /* Espaço menor entre os cards */
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas ficam melhores para leitura */
+        gap: 12px;
+        padding: 10px;
     }
 
-    /* Reduz o tamanho interno do card para economizar espaço */
-    .card {
-        padding: 8px;
-    }
+    /* Se você realmente quiser 3 colunas, mude o '2' acima para '3' */
 
-    /* Reduz o texto para não quebrar o layout */
+    /* 5. Ajustes nos Cards para não esmagar o texto */
     .nome_perfume {
-        font-size: 0.75rem; /* Texto menor */
-        line-height: 1.1;
-        margin: 5px 0;
-    }
-
-    .volumetria {
-        display: block; /* Joga a volumetria para baixo do nome */
-        font-size: 0.65rem;
+        font-size: 0.85rem;
+        min-height: 35px; /* Garante alinhamento mesmo com nomes curtos */
     }
 
     .brand {
-        font-size: 0.8rem;
-        font-weight: 700;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+        gap: 2px;
     }
 
-    .desconto {
+    .parcelas {
         font-size: 0.65rem;
-        text-decoration: line-through;
+        width: 100%; /* Joga a parcela para a linha de baixo se faltar espaço */
     }
 
-    /* Botão menor e com texto reduzido para caber no card pequeno */
     .btn-pedido {
-        padding: 6px 2px;
-        font-size: 0.65rem;
-        text-transform: uppercase;
-    }
-
-    /* Esconde o badge (Feminino/Masculino) no mobile para ganhar espaço na imagem */
-    .card .badge {
-        font-size: 0.6rem;
-        padding: 2px 6px;
-        position: absolute; /* Coloca por cima da imagem */
-        top: 5px;
-        left: 5px;
-    }
-    
-    .card {
-        position: relative; /* Necessário para o badge absoluto funcionar */
+        padding: 8px 5px;
+        font-size: 0.75rem;
     }
 }
 
