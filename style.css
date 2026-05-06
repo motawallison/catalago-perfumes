@@ -334,16 +334,64 @@ main#catalogo {
 }
 
 /* Ajuste responsivo: no celular, volta a ficar um embaixo do outro */
-@media (max-width: 900px) {
-    .layout-principal {
-        flex-direction: column;
+/* Ajustes para telas pequenas (Celulares) */
+@media (max-width: 600px) {
+    /* Faz o catálogo ocupar a largura total sem margens laterais grandes */
+    .layout-principal.container {
+        padding: 0 10px;
+    }
+
+    /* Ajusta o Grid para 3 colunas (ou 4 se mudar o número abaixo) */
+    .grid-perfumes {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+        gap: 8px; /* Espaço menor entre os cards */
+    }
+
+    /* Reduz o tamanho interno do card para economizar espaço */
+    .card {
+        padding: 8px;
+    }
+
+    /* Reduz o texto para não quebrar o layout */
+    .nome_perfume {
+        font-size: 0.75rem; /* Texto menor */
+        line-height: 1.1;
+        margin: 5px 0;
+    }
+
+    .volumetria {
+        display: block; /* Joga a volumetria para baixo do nome */
+        font-size: 0.65rem;
+    }
+
+    .brand {
+        font-size: 0.8rem;
+        font-weight: 700;
+    }
+
+    .desconto {
+        font-size: 0.65rem;
+        text-decoration: line-through;
+    }
+
+    /* Botão menor e com texto reduzido para caber no card pequeno */
+    .btn-pedido {
+        padding: 6px 2px;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+    }
+
+    /* Esconde o badge (Feminino/Masculino) no mobile para ganhar espaço na imagem */
+    .card .badge {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        position: absolute; /* Coloca por cima da imagem */
+        top: 5px;
+        left: 5px;
     }
     
-    .sidebar {
-        flex: none;
-        width: 100%;
-        margin-bottom: 20px;
-        position: static;
+    .card {
+        position: relative; /* Necessário para o badge absoluto funcionar */
     }
 }
 
