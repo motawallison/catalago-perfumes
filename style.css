@@ -1,6 +1,7 @@
 :root {
     --dourado-luxo: #c5a059; 
     --bege-claro: #f9f7f2;
+    --texto-escuro: #333;
 }
 
 
@@ -32,6 +33,15 @@ header {
     align-items: center;
     border-bottom: none;
     margin-bottom: 20px;
+}
+
+.logo, .price, .badge, .tag-atacado, .btn-comprar {
+    color: var(--dourado-luxo); /* Alterado de --dourado para --dourado-luxo */
+}
+
+.badge, .tag-atacado, .btn-comprar {
+    background-color: var(--dourado-luxo);
+    color: white;
 }
 
 header .logo, header p {
@@ -102,9 +112,13 @@ header p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 50%;
+    background: #fff; 
+    padding: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent; 
+    height: 100%; 
 }
-
 
 
 .card:hover {
@@ -113,10 +127,11 @@ header p {
 }
 
 .card img {
-    max-width: 70%;
-    border-radius: 5px;
+    max-width: 100%; 
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto 15px auto;
 }
-
 .price {
     font-weight: 600;
     font-size: 1.2rem;
@@ -243,24 +258,7 @@ footer {
     padding: 0 20px;
 }
 
-/* AJUSTE PARA CELULAR (Telas menores que 600px) */
-/* AJUSTE PARA CELULAR */
-@media (max-width: 600px) {
-    header {
-        /* Isso calcula a altura proporcional para o banner de 1080x200 */
-        height: auto;
-        aspect-ratio: 1080 / 200; 
-        background-size: contain;
-        margin-bottom: 10px;
-    }
-    
-    /* Ajuste para o grid de perfumes não ficar com itens muito pequenos */
-    .grid-perfumes {
-        grid-template-columns: repeat(2, 1fr); /* Força 2 colunas no celular */
-        gap: 15px;
-        padding: 10px;
-    }
-}
+
 
 
 .filtros-container {
@@ -306,4 +304,71 @@ footer {
     pointer-events: none; /* Impede o clique real no link */
     transform: none !important; /* Remove efeitos de hover */
     box-shadow: none !important;
+}
+
+/* Estilo da Sidebar */
+/* Container que envolve a Sidebar e o Main */
+.layout-principal {
+    display: flex;
+    gap: 30px; /* Espaço entre o menu e os perfumes */
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+/* Ajuste da Sidebar para não ocupar a tela toda */
+.sidebar {
+    flex: 0 0 250px; /* Largura fixa de 250px */
+    position: sticky; /* Faz o menu acompanhar o scroll */
+    top: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Ajuste do Main para ocupar o restante do espaço */
+main#catalogo {
+    flex: 1; /* Ocupa todo o espaço restante */
+    margin: 0;
+    padding: 0;
+}
+
+/* Ajuste responsivo: no celular, volta a ficar um embaixo do outro */
+@media (max-width: 900px) {
+    .layout-principal {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+        position: static;
+    }
+}
+
+/* Estilo dos itens da lista na Sidebar */
+.lista-categorias {
+    list-style: none;
+    padding: 0;
+}
+
+.item-categoria {
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    cursor: pointer; /* Faz aparecer a "mãozinha" do mouse */
+    transition: all 0.3s ease;
+    color: var(--texto-escuro);
+}
+
+.item-categoria:hover {
+    background-color: var(--bege-claro);
+    color: var(--dourado-luxo);
+}
+
+.item-categoria.active {
+    background-color: var(--dourado-luxo);
+    color: white;
+    font-weight: 600;
 }
