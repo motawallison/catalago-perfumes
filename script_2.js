@@ -7,38 +7,42 @@ document.addEventListener('DOMContentLoaded', () => {
     function filtrar() {
         const textoBusca = campoBusca.value.toLowerCase();
         
-        // Pega o gênero ativo (Todos, Masculino ou Feminino)
-        const btnGeneroAtivo = document.querySelector('.btn-filtro.active');
-        const generoAtivo = btnGeneroAtivo ? btnGeneroAtivo.getAttribute('data-genero').toLowerCase() : 'todos';
+        // Pega o gênero ativo do topo
+        const generoAtivo = document.querySelector('.btn-filtro.active').getAttribute('data-genero').toLowerCase();
         
-        // Pega a categoria ativa da sidebar (Todos, Árabes ou Miniaturas)
-        const itemCatAtivo = document.querySelector('.item-categoria.active');
-        const categoriaAtiva = itemCatAtivo ? itemCatAtivo.getAttribute('data-categoria') : 'todos';
+        // Pega a categoria ativa da lateral
+        const categoriaAtiva = document.querySelector('.item-categoria.active').getAttribute('data-categoria');
 
         cards.forEach(card => {
             const nomePerfume = card.querySelector('.nome_perfume').textContent.toLowerCase();
             const generoCard = card.querySelector('.badge').textContent.trim().toLowerCase();
             
-            // Validação 1: Nome
+            // Filtro 1: Nome
             const combinaNome = nomePerfume.includes(textoBusca);
             
-            // Validação 2: Gênero
+            // Filtro 2: Gênero
             const combinaGenero = (generoAtivo === 'todos' || generoCard === generoAtivo);
             
-            // Validação 3: Categoria (Classe 'arabe' ou 'miniatura')
+            // Filtro 3: Categoria (Verifica se o card tem a classe miniatura ou arabe)
             let combinaCategoria = false;
             if (categoriaAtiva === 'todos') {
                 combinaCategoria = true;
-            } else {
-                // Verifica se o card tem a classe exata (ex: 'arabe' ou 'miniatura')
-                // Usamos 'arabe' no singular conforme seu HTML
-                const classeAlvo = categoriaAtiva === 'arabes' ? 'arabe' : 'miniatura';
-                if (card.classList.contains(classeAlvo)) {
-                    combinaCategoria = true;
-                }
+            } else if (categoriaAtiva === 'miniaturas' && card.classList.contains('miniatura')) {
+                combinaCategoria = true;
+            } else if (categoriaAtiva === 'arabes' && card.classList.contains('arabe')) {
+                combinaCategoria = true;
             }
 
-            // Exibe apenas se passar em todos os critérios
+            // Regra para empurrar os esgotados para o fim
+            // Verifica se existe a classe .esgotado dentro do card
+            const estaEsgotado = card.querySelector('.esgotado') !== null;
+            if (estaEsgotado) {
+                card.style.order = '1'; // Joga para o fim
+            } else {
+                card.style.order = '0'; // Mantém no topo
+            }
+
+            // Mostra apenas se passar nos TRÊS testes
             if (combinaNome && combinaGenero && combinaCategoria) {
                 card.style.display = 'flex';
             } else {
@@ -47,23 +51,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Gerencia o clique nos botões de Gênero
-    botoesGenero.forEach(btn => {
-        btn.addEventListener('click', () => {
-            botoesGenero.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            filtrar();
-        });
-    });
-
-    // Gerencia o clique nas Categorias da Sidebar
-    itensCategoria.forEach(item => {
-        item.addEventListener('click', () => {
-            itensCategoria.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
+    // Eventos de clique para Gênero e Categorias
+    [...botoesGenero, ...itensCategoria].forEach(elemento => {
+        elemento.addEventListener('click', function() {
+            // Remove active apenas do grupo correto
+            const irmaos = this.parentElement.querySelectorAll(this.tagName.toLowerCase() === 'li' ? '.item-categoria' : '.btn-filtro');
+            irmaos.forEach(i => i.classList.remove('active'));
+            
+            this.classList.add('active');
             filtrar();
         });
     });
 
     campoBusca.addEventListener('input', filtrar);
+
+    // Executa a função uma vez ao carregar a página para ordenar os esgotados de início
+    filtrar();
 });
