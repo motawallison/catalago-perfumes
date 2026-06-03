@@ -423,3 +423,38 @@ main#catalogo {
     color: white;
     font-weight: 600;
 }
+
+/* Configuração para esconder o que passar das bordas arredondadas do card */
+.promo-card {
+    position: relative;
+    overflow: hidden; 
+}
+
+/* Estilo da Tarja */
+.tarja-promo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.tarja-promo span {
+    position: absolute;
+    display: block;
+    width: 150px;
+    padding: 4px 0;
+    background-color: #d9534f;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    color: #fff;
+    font: bold 10px/1 'Montserrat', sans-serif;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    text-transform: uppercase;
+    text-align: center;
+    right: -25px;
+    top: 20px;
+    transform: rotate(45deg);
+    letter-spacing: 1px;
+}
