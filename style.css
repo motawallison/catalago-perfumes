@@ -399,6 +399,16 @@ main#catalogo {
         padding: 8px 5px;
         font-size: 0.75rem;
     }
+
+    header {
+        height: 75px !important; /* Reduz drasticamente a caixa vazia no celular */
+        background-position: center top;
+    }
+
+    /* Ajuste extra: caso queira diminuir também a margem da busca no mobile */
+    .busca-container {
+        margin-top: 10px; 
+    }
 }
 
 /* Estilo dos itens da lista na Sidebar */
