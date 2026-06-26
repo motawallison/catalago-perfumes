@@ -92,6 +92,7 @@ header p {
     text-align: center;
     padding: 12px 20px;
     margin-top: 5px;
+    margin-bottom: 10px;
     border-radius: 30px; /* Deixa o botão arredondado como pedimos antes */
     font-weight: 600;
     font-size: 0.9rem;
@@ -371,6 +372,7 @@ main#catalogo {
         grid-template-columns: repeat(2, 1fr); /* 2 colunas ficam melhores para leitura */
         gap: 12px;
         padding: 10px;
+        margin-top: 20px;
     }
 
     /* Se você realmente quiser 3 colunas, mude o '2' acima para '3' */
@@ -457,4 +459,40 @@ main#catalogo {
     top: 20px;
     transform: rotate(45deg);
     letter-spacing: 1px;
+}
+
+
+/* --- FAIXA PROMOCIONAL EM SLIDE --- */
+.faixa-promocional {
+    background-color: var(--dourado-luxo);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding: 10px 0;
+    overflow: hidden; /* Esconde o texto que sai da tela */
+    white-space: nowrap; /* Impede o texto de quebrar linha */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px; /* Espaço antes de começar o grid de perfumes */
+    border-radius: 4px;
+    display: flex;
+}
+
+.texto-corrido {
+    display: flex;
+    animation: MarqueeExemplo 10s linear infinite;
+}
+
+.texto-corrido span {
+    padding-right: 1px; /* Espaçamento entre as repetições */
+}
+
+/* Animação que faz o texto deslizar da direita para a esquerda */
+@keyframes MarqueeExemplo {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0); /* Move exatamente metade do bloco duplicado para o loop ser infinito */
+    }
 }
