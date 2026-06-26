@@ -462,37 +462,33 @@ main#catalogo {
 }
 
 
-/* --- FAIXA PROMOCIONAL EM SLIDE --- */
+/* Container que organiza a faixa e o grid ao lado da sidebar */
+.conteudo-principal-coluna {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* --- FAIXA PROMOCIONAL ESTÁTICA --- */
 .faixa-promocional {
     background-color: var(--dourado-luxo);
     color: white;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    padding: 10px 0;
-    overflow: hidden; /* Esconde o texto que sai da tela */
-    white-space: nowrap; /* Impede o texto de quebrar linha */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 20px; /* Espaço antes de começar o grid de perfumes */
+    font-size: 1rem;
+    padding: 12px 0;
+    margin-bottom: 25px; /* Espaço elegante antes de começar o grid */
     border-radius: 4px;
-    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    
+    /* Centraliza o texto perfeitamente na horizontal e vertical */
+    text-align: center; 
 }
 
-.texto-corrido {
-    display: flex;
-    animation: MarqueeExemplo 10s linear infinite;
-}
-
-.texto-corrido span {
-    padding-right: 1px; /* Espaçamento entre as repetições */
-}
-
-/* Animação que faz o texto deslizar da direita para a esquerda */
-@keyframes MarqueeExemplo {
-    0% {
-        transform: translate3d(0, 0, 0);
-    }
-    100% {
-        transform: translate3d(-50%, 0, 0); /* Move exatamente metade do bloco duplicado para o loop ser infinito */
-    }
+.texto-faixa {
+    display: inline-block;
+    letter-spacing: 1px; /* Um leve espaçamento entre as letras para um visual mais luxuoso */
 }
